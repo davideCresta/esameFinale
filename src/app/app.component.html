@@ -1,0 +1,47 @@
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+  </style>
+
+  <div class="one">
+    <h1>Gutemberg Books</h1>
+  </div>
+</head>
+
+<body>
+
+<div class="searchbar">
+  <input matInput [(ngModel)]="searchTerm" placeholder="Cerca per autore (Invio)" (keyup.enter)="searchBooks()"> <br>
+  <button class="searchbar-btn" (click)="searchBooks()">Cerca</button>
+</div>
+
+<div class="up-button">
+  <button (click)="loadPrevious()">Indietro</button>
+  <button (click)="loadNext()">Avanti</button>
+</div>
+
+<ul class="list-group">
+  <li *ngFor="let book of bookList" class="list-group-item">
+    <ul class="menu">
+      <mat-card>
+        <mat-card-content>
+          <h2>{{ book.title }}</h2>
+        </mat-card-content>
+        <mat-card-subtitle>
+          <h3 *ngFor="let author of book.authors">
+            Author: {{ author.name }}
+          </h3>
+        </mat-card-subtitle>
+      </mat-card>
+    </ul>
+  </li>
+</ul>
+
+<div *ngIf="bookList"> </div>
+
+<div class="down-button">
+  <button (click)="loadPrevious()">Indietro</button>
+  <button (click)="loadNext()">Avanti</button>
+</div>
+
+</body>
